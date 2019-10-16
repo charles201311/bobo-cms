@@ -5,11 +5,14 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bobo.cms.domain.User;
 import com.bobo.cms.service.UserService;
+import com.bobo.cms.util.PageUtil;
 import com.github.pagehelper.PageInfo;
 /**
  * 
@@ -54,10 +57,26 @@ public class AdminController {
 			@RequestParam(defaultValue = "3")Integer pageSize) {
 		
 		PageInfo<User> info = userService.selects(username, page, pageSize);
-		
+		//调用分页工具
+		String pages = PageUtil.page(page, info.getPages(), "/admin/users?username="+username, pageSize);
 		model.addAttribute("users", info.getList());
 		model.addAttribute("username", username);
+		model.addAttribute("pages", pages);
 		return "admin/users";
 		
+	}
+	
+	/**
+	 * 修改用户状态
+	 * @Title: updateUser 
+	 * @Description: TODO
+	 * @return
+	 * @return: boolean
+	 */
+	@ResponseBody
+	@PostMapping("updateUser")
+	public boolean updateUser(User user) {
+		
+		return userService.updateByPrimaryKeySelective(user)>0;
 	}
 }

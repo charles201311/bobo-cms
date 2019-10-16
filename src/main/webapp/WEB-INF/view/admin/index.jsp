@@ -8,11 +8,16 @@
 <!-- 视窗 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 引入  css -->
-<link rel="stylesheet" href="/resource/css/bootstrap.min.css">
-<!-- 后台页面样式模板 -->
-<link rel="stylesheet" href="/resource/css/sb-admin.css">
-<link rel="stylesheet" href="/resource/css/all.min.css">
+<link rel="stylesheet" type="text/css"
+	href="/resource/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/resource/css/sb-admin.css" />
+<link rel="stylesheet" type="text/css" href="/resource/css/all.min.css" />
+
 <script type="text/javascript" src="/resource/js/jquery-3.2.1.js"></script>
+<script type="text/javascript"
+		src="/resource/js/bootstrap.min.js"></script>
+		<script type="text/javascript"
+		src="/resource/js/sb-admin.min.js"></script>
 </head>
 <body>
 
@@ -37,10 +42,22 @@
 	</div>
 
 <script type="text/javascript">
+
+
+
 //文档就绪函数
  $(function(){
 	 //为左侧菜单添加点击事件
 	 $(".nav-link").click(function(){
+		 
+	
+		 var li =$("ul li a");
+		//先移除所有的list-group-item-info样式
+		li.removeClass("list-group-item-info");
+		//为左侧菜单添加动态点击样式 
+		$(this).addClass("list-group-item-info");
+		 
+		 
 		 //获取点击URL
       var url = $(this).attr("data");
 		 //在当前页面的中间区域执行url

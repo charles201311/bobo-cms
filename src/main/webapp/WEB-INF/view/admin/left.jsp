@@ -6,7 +6,7 @@
 a{text-align: center;}
 </style>
 <ul class="sidebar navbar-nav" >
-	<li class="nav-item active" >
+	<li class="nav-item" >
 	<a class="nav-link" href="/admin">
 			<i class="fas fa-fw fa-tachometer-alt"></i> <span>后台首页</span>
 	</a></li>
