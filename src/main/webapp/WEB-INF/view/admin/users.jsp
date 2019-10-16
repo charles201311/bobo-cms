@@ -66,7 +66,10 @@
 		</table>
 		
 		<div>${pages }</div>
-
+	<div class="alert alert-primary" role="alert">
+  A simple primary alert—check it out!
+</div>
+</div>
 <script type="text/javascript">
 		
 		
@@ -80,7 +83,8 @@ function update(id,obj){
 	
 	$.post("/admin/updateUser",{id:id,locked:locked},function(flag){
 		if(flag){
-			alert("操作成功");
+			$().alert("alert alert-success")
+	
 			//改变按钮的内容
 			$(obj).text(locked==1?"停用":"正常");
 			//改变按钮的样式

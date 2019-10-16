@@ -1,11 +1,14 @@
-package com.bobo.cms.dao;
+package com.bobo.cms.service;
 
 import java.util.List;
 
 import com.bobo.cms.domain.Article;
 import com.bobo.cms.domain.ArticleWithBLOBs;
+import com.github.pagehelper.PageInfo;
 
-public interface ArticleMapper {
+public interface ArticleService {
+
+	
 	/**
 	 * 
 	 * @Title: selects 
@@ -14,20 +17,15 @@ public interface ArticleMapper {
 	 * @return
 	 * @return: List<Article>
 	 */
-	List<Article> selects(Article article);
+	PageInfo<Article> selects(Article article,Integer page,Integer pageSize);
 	
 	
     int deleteByPrimaryKey(Integer id);
-
-    int insert(ArticleWithBLOBs record);
 
     int insertSelective(ArticleWithBLOBs record);
 
     ArticleWithBLOBs selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(ArticleWithBLOBs record);
-
     int updateByPrimaryKeyWithBLOBs(ArticleWithBLOBs record);
 
-    int updateByPrimaryKey(Article record);
 }

@@ -22,6 +22,9 @@ public class Article  implements Serializable{
     private Integer categoryId;
 
     private Integer userId;
+    
+    private User user;//文章发布人
+    
 
     private Integer hits;
 
@@ -131,5 +134,15 @@ public class Article  implements Serializable{
     public void setUpdated(Date updated) {
         this.updated = updated;
     }
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+    
+    
    
 }

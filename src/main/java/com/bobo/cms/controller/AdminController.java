@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bobo.cms.domain.Article;
 import com.bobo.cms.domain.User;
+import com.bobo.cms.service.ArticleService;
 import com.bobo.cms.service.UserService;
 import com.bobo.cms.util.PageUtil;
 import com.github.pagehelper.PageInfo;
@@ -28,6 +30,9 @@ public class AdminController {
 	@Resource
 	private UserService userService;
 	
+	@Resource
+	private ArticleService articleService;
+	
 	/**
 	 * 
 	 * @Title: index 
@@ -41,6 +46,35 @@ public class AdminController {
 		return "admin/index";
 		
 	}
+	/**
+	 *  
+	 * @Title: users 
+	 * @Description: 文章列表
+	 * @param model
+	 * @param article
+	 * @param page
+	 * @param pageSize
+	 * @return
+	 * @return: String
+	 */
+	@GetMapping("articles")
+	public String users(Model model,Article article ,@RequestParam(defaultValue = "1")Integer page,
+			@RequestParam(defaultValue = "3")Integer pageSize) {
+		 //默认待审
+		if(article.getStatus()==null)
+		 article.setStatus(0);//待审
+		
+		PageInfo<Article> info = articleService.selects(article, page, pageSize);
+		//调用分页工具
+		String pages = PageUtil.page(page, info.getPages(), "/admin/articles", pageSize);
+		model.addAttribute("articles", info.getList());
+		model.addAttribute("article", article);
+		model.addAttribute("pages", pages);
+		return "admin/articles";
+		
+	}
+	
+	
    /**
     * 
     * @Title: users 

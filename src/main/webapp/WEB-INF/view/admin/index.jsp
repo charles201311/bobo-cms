@@ -12,14 +12,14 @@
 	href="/resource/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/resource/css/sb-admin.css" />
 <link rel="stylesheet" type="text/css" href="/resource/css/all.min.css" />
-
+<link rel="stylesheet" type="text/css" href="/resource/css/cms.css" />
 <script type="text/javascript" src="/resource/js/jquery-3.2.1.js"></script>
 <script type="text/javascript"
 		src="/resource/js/bootstrap.min.js"></script>
 		<script type="text/javascript"
 		src="/resource/js/sb-admin.min.js"></script>
 </head>
-<body>
+<body class="bg-light">
 
 	<!--top -->
 	<div>
@@ -30,7 +30,7 @@
 		<!-- 后台管理系统左册菜单 -->
 		<jsp:include page="left.jsp" />
 		<!-- 中间内容显示区域 -->
-		<div id="content-wrapper">
+		<div id="content-wrapper" class="bg-light">
 		
 		
 			<div align="center" >

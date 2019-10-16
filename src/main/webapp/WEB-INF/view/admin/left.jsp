@@ -5,13 +5,13 @@
 <style>
 a{text-align: center;}
 </style>
-<ul class="sidebar navbar-nav" >
+<ul class="sidebar navbar-nav bg-dark" >
 	<li class="nav-item" >
 	<a class="nav-link" href="/admin">
 			<i class="fas fa-fw fa-tachometer-alt"></i> <span>后台首页</span>
 	</a></li>
 	
-	<li class="nav-item"><a class="nav-link"  href="javascript:void(0)" data="/article/selectsByAdmin">
+	<li class="nav-item"><a class="nav-link"  href="javascript:void(0)" data="/admin/articles">
 			<i class="fas fa-fw fa-folder"></i> <span>文章管理</span>
 	</a></li>
 

@@ -14,6 +14,10 @@
     <result column="deleted" property="deleted" jdbcType="INTEGER" />
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    
+    <!-- 一对一关系 -->
+    <association property="user" javaType="user" select="com.bobo.cms.dao.UserMapper.selectByPrimaryKey" column="user_id"></association>
+    
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.bobo.cms.domain.ArticleWithBLOBs" extends="BaseResultMap" >
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
@@ -26,6 +30,37 @@
   <sql id="Blob_Column_List" >
     content, summary
   </sql>
+  
+  
+  
+  <select id="selects" resultMap="BaseResultMap">
+  
+  select * from cms_article 
+  <where>
+     <!-- 标题 -->
+     <if test="title!=null and title!=''">
+      title like "%" #{title} "%"
+     </if>
+     <!-- 栏目查询 -->
+     <if test="channelId!=null and channelId!=0">
+      and  channel_Id  =#{channelId}
+     </if>
+      <!-- 分类查询 -->
+     <if test="categoryId!=null and categoryId!=0">
+      and  category_Id  =#{categoryId}
+     </if>
+     <!-- 文章审核状态查询 -->
+     <if test="status!=null">
+      and  status  =#{status}
+     </if>
+  
+  </where>
+  
+  
+  
+  </select>
+  
+  
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
