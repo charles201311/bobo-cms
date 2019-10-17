@@ -23,7 +23,7 @@ public class UserServiceImplTest extends JunitParent {
 		User user = new User();
 		user.setUsername("王四");
 		user.setPassword("456");
-		userService.insertSelective(user);
+		//userService.insertSelective(user);
 		
 		
 	}

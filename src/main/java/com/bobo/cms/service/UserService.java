@@ -1,6 +1,7 @@
 package com.bobo.cms.service;
 
 import com.bobo.cms.domain.User;
+import com.bobo.cms.vo.UserVO;
 import com.github.pagehelper.PageInfo;
 
 public interface UserService {
@@ -16,7 +17,7 @@ public interface UserService {
 	PageInfo<User> selects(String username,Integer page,Integer pageSize);
 
      
-    int insertSelective(User record);
+    int insertSelective(UserVO userVO);
 
     User selectByPrimaryKey(Integer id);
 

@@ -1,9 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.bobo</groupId>
-  <artifactId>bobo-cms</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.bobo</groupId>
+	<artifactId>bobo-cms</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<!-- 定义主要版本号 -->
 	<properties>
 		<spring.version>5.1.5.RELEASE</spring.version>
@@ -33,6 +35,15 @@
 
 	<!-- jar依赖 -->
 	<dependencies>
+	  <!-- 引入自定义工具类 -->
+		<dependency>
+			<groupId>com.bobo</groupId>
+			<artifactId>bobo-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+
+		</dependency>
+
+
 		<!-- spring 及springMVC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -248,33 +259,32 @@
 				<version>9.3.7.v20160115</version>
 				<configuration>
 					<httpConnector>
-					    <!--  项目端口号 -->
+						<!-- 项目端口号 -->
 						<port>80</port>
-						 <!--项目路径 -->
+						<!--项目路径 -->
 						<host>localhost</host>
 					</httpConnector>
-					<!-- 配置虚拟访问路径
-				 -->
-				 <contextHandlers>
-				   <jettyWebAppContext>
-				   <!-- 虚拟路径 -->
-				    <contextPath>/pic/</contextPath>
-				   
-				     <!-- 物理路径 -->
-				     <resourceBase>D:/pic/</resourceBase>
-				   
-				   
-				   </jettyWebAppContext>
-				 
-				 </contextHandlers>
-					
-				 <scanIntervalSeconds>1</scanIntervalSeconds>
+					<!-- 配置虚拟访问路径 -->
+					<contextHandlers>
+						<jettyWebAppContext>
+							<!-- 虚拟路径 -->
+							<contextPath>/pic/</contextPath>
+
+							<!-- 物理路径 -->
+							<resourceBase>D:/pic/</resourceBase>
+
+
+						</jettyWebAppContext>
+
+					</contextHandlers>
+
+					<scanIntervalSeconds>1</scanIntervalSeconds>
 				</configuration>
-				
-				
+
+
 			</plugin>
-			
-			
+
+
 
 		</plugins>
 
