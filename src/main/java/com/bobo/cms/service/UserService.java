@@ -5,6 +5,17 @@ import com.bobo.cms.vo.UserVO;
 import com.github.pagehelper.PageInfo;
 
 public interface UserService {
+	
+	/**
+	 * 
+	 * @Title: login 
+	 * @Description: 登陆
+	 * @param user
+	 * @return
+	 * @return: User
+	 */
+	User login(User user);
+	
 
 	/**
 	 * 

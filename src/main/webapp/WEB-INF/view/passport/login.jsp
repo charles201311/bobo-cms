@@ -38,7 +38,7 @@
 							<form id="form1" method="post" action="/passport/login">
 								<div class="form-group">
 									<label for="username"> 用户名:</label> <input type="text"
-										class="form-control" name="username" id="username" value="${username }">
+										class="form-control" name="username" id="username" value="${userVO.username }">
 								</div>
 								<div class="form-group">
 									<label for="password"> 密码:</label> <input type="password"

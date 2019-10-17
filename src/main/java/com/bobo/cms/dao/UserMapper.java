@@ -18,6 +18,7 @@ public interface UserMapper {
 	List<User> selects(@Param("username")String username);
 	
 	
+	
     int deleteByPrimaryKey(Integer id);
 
     int insert(User record);

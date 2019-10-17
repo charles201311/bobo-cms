@@ -10,6 +10,7 @@ import com.bobo.cms.dao.UserMapper;
 import com.bobo.cms.domain.User;
 import com.bobo.cms.exception.CMSException;
 import com.bobo.cms.service.UserService;
+import com.bobo.cms.util.Md5Util;
 import com.bobo.cms.vo.UserVO;
 import com.bobo.common.utils.StringUtil;
 import com.github.pagehelper.PageHelper;
@@ -55,9 +56,14 @@ public class UserServiceImpl implements UserService {
 			throw new CMSException("两次密码不一致");
 		}
 
+		//对密码进行加密
+		userVO.setPassword(Md5Util.md5Encoding(userVO.getPassword()));
 		return userMapper.insertSelective(userVO);
 	}
 
+	
+	
+	
 	@Override
 	public User selectByPrimaryKey(Integer id) {
 		return userMapper.selectByPrimaryKey(id);
@@ -66,6 +72,30 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int updateByPrimaryKeySelective(User record) {
 		return userMapper.updateByPrimaryKeySelective(record);
+	}
+
+	@Override
+	public User login(User user) {
+		if(null==user) {
+			throw new CMSException("用户名和密码必须输入");
+		}
+		if(!StringUtil.hasText(user.getUsername())) {
+			throw new CMSException("用户名必须输入");
+		}
+		if(!StringUtil.hasText(user.getPassword())) {
+			throw new CMSException("密码必须输入");
+		}
+		//检查用户名是否存在
+		List<User> list = userMapper.selects(user.getUsername());
+		if(null==list||list.size()==0) {
+			throw new CMSException("无此用户");
+		}
+		//比较密码
+		if(!(list.get(0).getPassword().equals(Md5Util.md5Encoding(user.getPassword())))) {
+			throw new CMSException("密码不正确");
+		}
+		
+		return list.get(0);
 	}
 
 }

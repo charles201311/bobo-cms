@@ -46,7 +46,7 @@
 							<a href="#" class="nav-link dropdown-toggle" role="button"
 								id="dropdownMenuButton" data-toggle="dropdown"
 								aria-haspopup="true" aria-expanded="false"> <c:out
-									value="${user.nickname}" default="CMS-User" />
+									value="${user.username}" default="CMS-User" />
 							</a>
 							<div class="dropdown-menu dropdown-menu-right"
 								aria-labelledby="dropdownMenuButton">
