@@ -1,4 +1,4 @@
-package com.bobo.cms.service;
+package com.bobo.cms.service.impl;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.bobo.cms.dao.ArticleMapper;
 import com.bobo.cms.domain.Article;
 import com.bobo.cms.domain.ArticleWithBLOBs;
+import com.bobo.cms.service.ArticleService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
