@@ -59,3 +59,16 @@ ol,ol li{padding: 0;margin: 0}
 .avatar{
 	margin-top: -150px;
 }
+.cms-list-group-item-action:hover {
+  z-index: 1;
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #ff0000;
+}
+.cms-list-group-item-active {
+  z-index: 2;
+  color: #fff;
+  background-color: #ff0000;
+  border-color: #007bff;
+}
+

@@ -46,7 +46,7 @@ public class IndexController {
 	 */
 	
 	@RequestMapping(value = {"","/","index"})
-	public String index(Model model,Article article,@RequestParam(defaultValue ="1")Integer page,@RequestParam(defaultValue ="10")Integer pageSize) {
+	public String index(Model model,Article article,@RequestParam(defaultValue ="1")Integer page,@RequestParam(defaultValue ="5")Integer pageSize) {
 		
 	   //1.显示左侧栏目
 		List<Channel> channels = channelService.selects();	
@@ -55,15 +55,34 @@ public class IndexController {
 		if(null!=article.getChannelId()) {
 		  List<Category> categorys = categoryService.selectsByChannelId(article.getChannelId());
 		  model.addAttribute("categorys", categorys);
-		}
-		//3.查询分类下的文章
-		if(null!=article.getCategoryId()) {
-			PageInfo<Article> info = articleService.selects(article, page, pageSize);
-			PageUtil.page(page, info.getPages(), "/channelId="+article.getChannelId()+"&categoryId="+article.getCategoryId(), pageSize);
+		  
+		//3. 如果栏目不为空,并且分类也不为空则查询分类下的文章
+		//	if(null!=article.getCategoryId()) {
+				PageInfo<Article> info = articleService.selects(article, page, pageSize);
+				String pages = PageUtil.page(page, info.getPages(), "/?channelId="+article.getChannelId()+"&categoryId="+article.getCategoryId(), pageSize);
+				
+				
+				model.addAttribute("articles", info.getList());
+				model.addAttribute("pages", pages);
+			//}
 			
-			model.addAttribute("articles", info.getList());
+			
 		}
 		
+		//4 如果栏目为空则默认查询热点文章
+		if(null==article.getChannelId()) {
+			
+			article.setHot(1);//热点文章
+			PageInfo<Article> info = articleService.selects(article, page, pageSize);
+            String pages = PageUtil.page(page, info.getPages(), "/", pageSize);
+			model.addAttribute("hotArticles", info.getList());
+			model.addAttribute("pages", pages);
+		}
+		
+		
+		
+		//封装查询条件
+		model.addAttribute("article", article);
 		return "index/index";
 		
 	}
