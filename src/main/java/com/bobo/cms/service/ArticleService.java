@@ -26,6 +26,6 @@ public interface ArticleService {
 
     ArticleWithBLOBs selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeyWithBLOBs(ArticleWithBLOBs record);
+    int updateByPrimaryKeySelective(ArticleWithBLOBs record);
 
 }

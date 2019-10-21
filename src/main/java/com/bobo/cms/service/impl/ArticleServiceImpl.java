@@ -46,9 +46,9 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	public int updateByPrimaryKeyWithBLOBs(ArticleWithBLOBs record) {
+	public int updateByPrimaryKeySelective(ArticleWithBLOBs record) {
 		// TODO Auto-generated method stub
-		return articleMapper.updateByPrimaryKeyWithBLOBs(record);
+		return articleMapper.updateByPrimaryKeySelective(record);
 	}
 
 }

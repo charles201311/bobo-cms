@@ -60,7 +60,12 @@
 							pattern="yyyy-MM-dd HH:mm:ss" /></td>
 						<td>${a.status==0?"待审":a.status==1?"已审":"驳回" }</td>
 					<td>${a.hits}</td>
-					<td>${a.hot==0?"否":"是" }</td>
+					
+					<td><c:if test="${a.hot==0 }">
+							<button class="btn btn-success" onclick="update(${a.id},this)">否</button>
+						</c:if> <c:if test="${a.hot==1 }">
+							<button class="btn btn-danger" onclick="update(${a.id},this)">是</button>
+						</c:if></td>
 				</tr>
 
 			</c:forEach>
@@ -72,6 +77,30 @@
 	
 </div>
 <script type="text/javascript">
+
+
+
+//热门文章管理
+function update(id,obj){
+	//0:否 1:是
+	var hot =$(obj).text()=="否"?"1":"0";
+	
+	
+	$.post("/admin/updateArticle",{id:id,hot:hot},function(flag){
+		if(flag){
+	
+			//改变按钮的内容
+			$(obj).text(hot==1?"是":"否");
+			//改变按钮的样式
+			$(obj).attr("class",hot==1?"btn btn-danger":"btn btn-success");
+		}else{
+			alert("操作失败")
+		}
+	})
+	
+}
+
+
 		
 	//回显查询条件
 	$(function(){

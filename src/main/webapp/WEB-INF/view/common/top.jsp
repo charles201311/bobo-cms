@@ -48,7 +48,7 @@
 								aria-haspopup="true" aria-expanded="false"> <c:out
 									value="${user.username}" default="CMS-User" />
 							</a>
-							<div class="dropdown-menu dropdown-menu-right"
+							<div class="dropdown-menu dropdown-menu-left"
 								aria-labelledby="dropdownMenuButton">
 								<a class="dropdown-item" href="/my/">个人主页</a> <a
 									class="dropdown-item" href="#">个人设置</a> <a

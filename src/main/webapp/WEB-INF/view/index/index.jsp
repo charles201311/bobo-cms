@@ -7,16 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>cms系统</title>
-<style type="text/css">
-</style>
-
-</head>
 <body>
-	<div class="container">
-		<!-- top -->
+<!-- top -->
 		<div>
 			<jsp:include page="/WEB-INF/view/common/top.jsp"></jsp:include>
 		</div>
+	<div class="container">
+		
 		<br>
 		<!-- 主体 -->
 		<div class="row">
@@ -25,7 +22,7 @@
 				<ul class="list-group text-center">
 					<li
 						class="list-group-item cms-list-group-item-action ${c.id==article.channelId?"cms-list-group-item-active":"" }"><a
-						href="/" class="channel">热门 </a></li>
+						href="/?hot=1" class="channel">热门 </a></li>
 				</ul>
 				<c:forEach items="${channels}" var="c">
 					<ul class="list-group text-center">
@@ -39,54 +36,105 @@
 
 			<!-- 中间文章标题 -->
 			<div class="col-md-7 split min_h_500">
-			
+
 
 				<!-- 如果栏目为空,则显示热点文章 -->
 				<c:if test="${article.channelId==null}">
-
-					<c:forEach items="${hotArticles}" var="a">
-						<div class="media">
-							<img src="/pic/${a.picture }" class="mr-3" alt="...">
-							<div class="media-body ">
-								<h5 class="mt-0 ">
-									<a href="/select?id=${a.id }" target="blank">${a.title }</a>
-								</h5>
-								<h5 class="mt-0 myposition">${a.user.username }
-									&nbsp;
-									<fmt:formatDate value="${a.created }"
-										pattern="yyyy-MM-dd HH:mm:ss" />
-								</h5>
+					<!-- 轮播图 -->
+					<div>
+						<div class="bd-example">
+							<div id="carouselExampleCaptions" class="carousel slide"
+								data-ride="carousel">
+								<ol class="carousel-indicators">
+									<li data-target="#carouselExampleCaptions" data-slide-to="0"
+										class="active"></li>
+									<li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+									<li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+								</ol>
+								<div class="carousel-inner">
+									<div class="carousel-item active">
+										<img src="/pic/1.jpg" class="d-block w-100" alt="...">
+										<div class="carousel-caption d-none d-md-block">
+											<h5>图片一</h5>
+											
+										</div>
+									</div>
+									<div class="carousel-item">
+										<img src="/pic/2.jpg" class="d-block w-100" alt="...">
+										<div class="carousel-caption d-none d-md-block">
+											<h5>图片二一</h5>
+											
+										</div>
+									</div>
+									<div class="carousel-item">
+										<img src="/pic/3.jpg" class="d-block w-100" alt="...">
+										<div class="carousel-caption d-none d-md-block">
+											<h5>图片三</h5>
+											
+										</div>
+									</div>
+								</div>
+								<a class="carousel-control-prev" href="#carouselExampleCaptions"
+									role="button" data-slide="prev"> <span
+									class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+									class="sr-only">Previous</span>
+								</a> <a class="carousel-control-next"
+									href="#carouselExampleCaptions" role="button" data-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="sr-only">Next</span>
+								</a>
 							</div>
 						</div>
-						<hr>
-					</c:forEach>
 
+
+					</div>
+					<br>
+
+					<!-- 热点文章 -->
+					<div>
+
+						<c:forEach items="${hotArticles}" var="a">
+							<div class="media">
+								<img src="/pic/${a.picture }" class="mr-3" alt="..." style="width: 190px;height:124px ">
+								<div class="media-body ">
+									<h5 class="mt-0 ">
+										<a href="/select?id=${a.id }" target="blank">${a.title }</a>
+									</h5>
+									<h5 class="mt-0 myposition">${a.user.username }
+										&nbsp;
+										<fmt:formatDate value="${a.created }"
+											pattern="yyyy-MM-dd HH:mm:ss" />
+									</h5>
+								</div>
+							</div>
+							<hr>
+						</c:forEach>
+						${pages }
+					</div>
 				</c:if>
 
 				<!-- 如果栏目不为空则先栏目下的文章 -->
 				<c:if test="${article.channelId!=null}">
-				
+
 					<div>
-					<!--显示栏目下分类  -->
-				 	<ul class="nav">
-				   	<li class="nav-item ${c.id==article.categoryId?"cms-list-group-item-active":"" } "><a
-				 				class="nav-link"
-								href="?channelId=${article.channelId}">全部</a>
-							</li>
-						<c:forEach items="${categorys}" var="c">
+						<!--显示栏目下分类  -->
+						<ul class="nav">
 							<li class="nav-item ${c.id==article.categoryId?"cms-list-group-item-active":"" } "><a
-								class="nav-link"
-								href="?channelId=${c.channelId}&categoryId=${c.id}">${c.name }</a>
-							</li>
-						</c:forEach>
-					</ul>
-				</div>
-				
+								class="nav-link" href="?channelId=${article.channelId}">全部</a></li>
+							<c:forEach items="${categorys}" var="c">
+								<li class="nav-item ${c.id==article.categoryId?"cms-list-group-item-active":"" } "><a
+									class="nav-link"
+									href="?channelId=${c.channelId}&categoryId=${c.id}">${c.name }</a>
+								</li>
+							</c:forEach>
+						</ul>
+					</div>
+
 					<div>
 						<hr>
 						<c:forEach items="${articles}" var="a">
 							<div class="media">
-								<img src="/pic/${a.picture }" class="mr-3" alt="...">
+								<img src="/pic/${a.picture }" class="mr-3" alt="..." style="width: 190px;height:124px ">
 								<div class="media-body ">
 									<h5 class="mt-0 ">
 										<a href="/select?id=${a.id }" target="blank">${a.title }</a>
@@ -109,7 +157,6 @@
 
 			<!-- 右侧边栏 -->
 			<div class="col-md-3 split min_h_500">右侧边栏</div>
-
 		</div>
 
 

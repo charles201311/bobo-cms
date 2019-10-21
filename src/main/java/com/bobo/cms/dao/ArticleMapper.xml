@@ -53,8 +53,20 @@
      <if test="status!=null">
       and  status  =#{status}
      </if>
+     <!-- 按照作者查询 -->
+      <if test="userId!=null">
+      and  user_id  =#{userId}
+     </if>
+     
+       <!-- 热门文章查询-->
+     <if test="hot!=null">
+      and  hot  =#{hot}
+     </if>
   
   </where>
+  
+  
+  order by created desc
   
   
   

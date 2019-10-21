@@ -1,5 +1,6 @@
 package com.bobo.cms.controller;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -59,7 +60,13 @@ public class IndexController {
 		//3. 如果栏目不为空,并且分类也不为空则查询分类下的文章
 		//	if(null!=article.getCategoryId()) {
 				PageInfo<Article> info = articleService.selects(article, page, pageSize);
-				String pages = PageUtil.page(page, info.getPages(), "/?channelId="+article.getChannelId()+"&categoryId="+article.getCategoryId(), pageSize);
+				
+				String url="/?channelId="+article.getChannelId();
+				if(null!=article.getCategoryId()) {
+					url+="&categoryId="+article.getCategoryId();
+				}
+				
+				String pages = PageUtil.page(page, info.getPages(), url, pageSize);
 				
 				
 				model.addAttribute("articles", info.getList());
@@ -78,9 +85,6 @@ public class IndexController {
 			model.addAttribute("hotArticles", info.getList());
 			model.addAttribute("pages", pages);
 		}
-		
-		
-		
 		//封装查询条件
 		model.addAttribute("article", article);
 		return "index/index";

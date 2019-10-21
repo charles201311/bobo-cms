@@ -272,7 +272,8 @@
 
 							<!-- 物理路径 -->
 							<resourceBase>D:/pic/</resourceBase>
-
+							
+						
 
 						</jettyWebAppContext>
 

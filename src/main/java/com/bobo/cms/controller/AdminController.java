@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bobo.cms.domain.Article;
+import com.bobo.cms.domain.ArticleWithBLOBs;
 import com.bobo.cms.domain.User;
 import com.bobo.cms.service.ArticleService;
 import com.bobo.cms.service.UserService;
@@ -74,6 +75,19 @@ public class AdminController {
 		
 	}
 	
+	/**
+	 * 设置为热门文章
+	 * @Title: updateArticle 
+	 * @Description: TODO
+	 * @param article
+	 * @return
+	 * @return: boolean
+	 */
+	@ResponseBody
+	@RequestMapping("updateArticle")
+	public boolean updateArticle(ArticleWithBLOBs article) {
+		return articleService.updateByPrimaryKeySelective(article)>0;
+	}
 	
    /**
     * 

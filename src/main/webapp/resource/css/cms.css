@@ -61,10 +61,14 @@ ol,ol li{padding: 0;margin: 0}
 }
 .cms-list-group-item-action:hover {
   z-index: 1;
-  color: #ffffff;
   text-decoration: none;
   background-color: #ff0000;
 }
+.cms-list-group-item-action:hover a {
+  text-decoration: none;
+  color:#ffffff;
+}
+
 .cms-list-group-item-active {
   z-index: 2;
   color: #fff;
