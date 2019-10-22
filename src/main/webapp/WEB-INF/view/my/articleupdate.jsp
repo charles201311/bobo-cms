@@ -51,13 +51,15 @@
 	<form id="form1">
 
 		<div class="form-group">
+		 <!-- 要修改的文章id -->
+		 <input type="hidden" name="id" value="${article.id }">
 			<label for="title"> 文章标题:</label> <input class="form-control"
-				type="text" name="title" id="title">
+				type="text" name="title" id="title" value="${article.title }">
 		</div>
 		<div class="form-group">
 			<label for="content"> 文章内容:</label>
 			<textarea rows="10" cols="30" name="content1" id="content"
-				style="width: 825px">
+				style="width: 825px" > ${article.content }
    
    </textarea>
 		</div>
@@ -89,7 +91,7 @@
 		 formData.set("content",editor1.html());
 		 $.ajax({
 			 type:"post",
-			 url:"/my/publish",
+			 url:"/my/publishUpdate",
 			 data : formData,
 			// 告诉jQuery不要去处理发送的数据
 			 processData : false,
@@ -114,7 +116,10 @@
 	
 	
 	
-	
+	//获取要修改的文章栏目ID
+	var channelId='${article.channelId}'
+		//获取要修改的文章分类ID
+	var categoryid='${article.categoryId}'
 	
   $(function(){
 	  //文档就绪时加载文章栏目
@@ -122,21 +127,20 @@
 		for(var i in channel){
 			$("#channel").append(" <option value='"+channel[i].id+"'> "+channel[i].name+"</option");
 		};
+		//让栏目回显选中
+		$("#channel").val(channelId);
+		
+		//查询该栏目下的分类
+		 getCategory(channelId);
+			
 		//为栏目绑定change事件,
 		$("#channel").change(function(){
 			 //先清空分类原有的option
 			  $("#category").empty();
 			//获取当前选中的栏目ID
 		  var cid =$(this).val();
-		  //根据栏目ID 查询栏目下的分类
-		  $.get("/channel/selectCategorysByCid",{cid:cid},function(categorys){
-			 
-			  for(var i in categorys){
-					$("#category").append(" <option value='"+categorys[i].id+"'> "+categorys[i].name+"</option");
-				};  
-			  
-		  })
-			
+		 
+		  getCategory(cid);
 			
 		})
 		
@@ -146,6 +150,20 @@
 	  
   })
  
+   //根据栏目ID 查询栏目下的分类
+  function getCategory(cid){
+	
+	  $.get("/channel/selectCategorysByCid",{cid:cid},function(categorys){
+		 
+		  for(var i in categorys){
+				$("#category").append(" <option value='"+categorys[i].id+"'> "+categorys[i].name+"</option");
+			};  
+			//为分类赋值	
+			if(channelId==cid)
+				//选中
+		     $("#category").val(categoryid);
+	  })
+  }
  
  </script>
 </body>

@@ -6,6 +6,8 @@ import com.github.pagehelper.PageInfo;
 
 public interface UserService {
 	
+	
+	
 	/**
 	 * 
 	 * @Title: login 

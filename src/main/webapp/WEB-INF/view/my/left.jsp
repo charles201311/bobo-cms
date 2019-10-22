@@ -9,8 +9,9 @@
 <div>
 	<div class="list-group">
 		<ul class="list-group">
-			<li class="list-group-item  text-center list-group-item-info"  id="myArticle" ><a class="channel"
-				href="javascript:void(0)"  data="/my/selectsByUser" >我的文章
+			<li id="myArticle" class="list-group-item  text-center list-group-item-info"   >
+			<a class="channel"
+				href="javascript:void(0)"  data="/my/articles"  >我的文章
 			</a></li>
 			<li class="list-group-item  text-center" ><a class="channel"
 				href="javascript:void(0)" data="/my/article/publish"
@@ -39,4 +40,3 @@
 		</ul>
 	</div>
 </div>
-

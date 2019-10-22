@@ -33,7 +33,7 @@
 		<div id="content-wrapper" class="bg-light">
 		
 		
-			<div align="center" >
+			<div align="center"  >
 				<img alt="" src="/resource/images/bg_admin.jpg"
 					class="rounded-circle">
 			</div>
@@ -49,8 +49,6 @@
  $(function(){
 	 //为左侧菜单添加点击事件
 	 $(".nav-link").click(function(){
-		 
-	
 		 var li =$("ul li a");
 		//先移除所有的list-group-item-info样式
 		li.removeClass("list-group-item-info");

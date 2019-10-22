@@ -53,7 +53,7 @@
 			<c:forEach items="${articles }" var="a" varStatus="index">
 				<tr>
 					<td>${index.index+1 }</td>
-					<td>${a.title}</td>
+					<td><a href="javascript:detail(${a.id})">${a.title}</a></td>
 					<td>${a.user.username }</td>
 					<td>${a.user.nickname }</td>
 					<td><fmt:formatDate value="${a.created }"
@@ -78,7 +78,13 @@
 </div>
 <script type="text/javascript">
 
+ //文章详情
+ function detail(id){
 
+	 var url="/admin/article?id="+id;
+	// alert(url)
+	 $("#content-wrapper").load(url);
+ }
 
 //热门文章管理
 function update(id,obj){

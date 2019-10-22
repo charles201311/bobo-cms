@@ -109,10 +109,10 @@ public class PassportController {
 			 User u = userService.login(user);
 			 
 			 if(u.getRole().equals("0")) {//普通用户
-				 session.setAttribute("user", user);//存入session
+				 session.setAttribute("user", u);//存入session
 			     return "redirect:/my/index";//进入个人中心
 			 }
-			 session.setAttribute("admin", user);//存入session
+			 session.setAttribute("admin", u);//存入session
 			 return "redirect:/admin";//进入管理员页面
 		}catch (CMSException e) {
 			e.printStackTrace();

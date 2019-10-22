@@ -49,6 +49,9 @@ public class IndexController {
 	@RequestMapping(value = {"","/","index"})
 	public String index(Model model,Article article,@RequestParam(defaultValue ="1")Integer page,@RequestParam(defaultValue ="5")Integer pageSize) {
 		
+		//只查询文章状态审核过的
+		article.setStatus(1);
+		article.setDeleted(0);//未删除
 	   //1.显示左侧栏目
 		List<Channel> channels = channelService.selects();	
 		model.addAttribute("channels", channels);

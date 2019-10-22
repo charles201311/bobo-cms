@@ -19,6 +19,11 @@
   </sql>
   
   
+  <select id="selectByUsername" resultMap="BaseResultMap">
+  select * from cms_user where username =#{username}
+  
+  </select>
+  
   <select id="selects" resultMap="BaseResultMap">
   
    select <include refid="Base_Column_List"/> from  cms_user

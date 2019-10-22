@@ -49,7 +49,10 @@
  <script type="text/javascript">
  $(function(){
 	 
-	
+	 //页面加载时让为左侧菜单默认点击 我的文章
+	  
+	// $("#myArticle").click();
+     $("#center").load("/my/articles")
 	 
 	 $(".channel").click(function(){
 
@@ -64,9 +67,9 @@
 		 var url =$(this).attr("data");
 		 $("#center").load(url);
 	 })
+	
 	 
-	 
-	 
+
  })
  
  

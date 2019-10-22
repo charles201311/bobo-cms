@@ -67,11 +67,27 @@ public class AdminController {
 		
 		PageInfo<Article> info = articleService.selects(article, page, pageSize);
 		//调用分页工具
-		String pages = PageUtil.page(page, info.getPages(), "/admin/articles", pageSize);
+		String pages = PageUtil.page(page, info.getPages(), "/admin/articles?title="+article.getTitle()+"&status="+article.getStatus(), pageSize);
 		model.addAttribute("articles", info.getList());
 		model.addAttribute("article", article);
 		model.addAttribute("pages", pages);
 		return "admin/articles";
+		
+	}
+	
+	/**
+	 * 
+	 * @Title: article 
+	 * @Description: 单个文章详情
+	 * @param id
+	 * @return
+	 * @return: String
+	 */
+	@GetMapping("article")
+	public String article(Model model,Integer id) {
+		ArticleWithBLOBs article = articleService.selectByPrimaryKey(id);
+		model.addAttribute("article",article);
+		return "admin/article";
 		
 	}
 	

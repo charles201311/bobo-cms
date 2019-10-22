@@ -17,7 +17,7 @@ public interface UserMapper {
 	 */
 	List<User> selects(@Param("username")String username);
 	
-	
+	User selectByUsername(String username);
 	
     int deleteByPrimaryKey(Integer id);
 

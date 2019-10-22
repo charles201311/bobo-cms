@@ -1,5 +1,6 @@
 package com.bobo.cms.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -31,6 +32,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int insertSelective(UserVO userVO) {
+		
+		
+		
+		
 		// 如果用户为null. 说明没有传值
 		if (null == userVO) {
 
@@ -58,6 +63,12 @@ public class UserServiceImpl implements UserService {
 
 		//对密码进行加密
 		userVO.setPassword(Md5Util.md5Encoding(userVO.getPassword()));
+		
+		//注册用户默认值
+		userVO.setLocked(0);//启用状态
+		userVO.setCreated(new Date());//注册时间
+		userVO.setUpdated(new Date());
+		userVO.setNickname(userVO.getUsername());//别名
 		return userMapper.insertSelective(userVO);
 	}
 
@@ -86,16 +97,16 @@ public class UserServiceImpl implements UserService {
 			throw new CMSException("密码必须输入");
 		}
 		//检查用户名是否存在
-		List<User> list = userMapper.selects(user.getUsername());
-		if(null==list||list.size()==0) {
+		User u = userMapper.selectByUsername(user.getUsername());
+		if(null==u) {
 			throw new CMSException("无此用户");
 		}
 		//比较密码
-		if(!(list.get(0).getPassword().equals(Md5Util.md5Encoding(user.getPassword())))) {
+		if(!(u.getPassword().equals(Md5Util.md5Encoding(user.getPassword())))) {
 			throw new CMSException("密码不正确");
 		}
 		
-		return list.get(0);
+		return u;
 	}
 
 }
