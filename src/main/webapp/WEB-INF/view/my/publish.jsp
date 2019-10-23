@@ -12,12 +12,17 @@
 	href="/resource/kindeditor/themes/default/default.css" />
 <link rel="stylesheet"
 	href="/resource/kindeditor/plugins/code/prettify.css" />
+	<!-- jquery.validate 校验提示样式 -->
+<link rel="stylesheet" type="text/css"
+	href="/resource/css/jquery/screen.css">
 <script charset="utf-8"
 	src="/resource/kindeditor/plugins/code/prettify.js"></script>
 <script charset="utf-8" src="/resource/kindeditor/kindeditor-all.js"></script>
     
 <script charset="utf-8" src="/resource/kindeditor/lang/zh-CN.js"></script>
 <script src="/resource/js/jquery-3.2.1.js"></script>
+
+	<script type="text/javascript" src="/resource/js/jquery.validate.js"></script>
 <script>
 	KindEditor.ready(function(K) {
 		window.editor1 = K.create('textarea[name="content1"]', {
@@ -63,11 +68,11 @@
 		</div>
 		<div class="form-group form-inline">
 			栏目:<select class="form-control-sm" id="channel" name="channelId">
-				<option>请选择</option>
+				<option value="-1">请选择</option>
 
 			</select> &nbsp;&nbsp; 分类:
 			<select class="form-control-sm" id="category" name="categoryId">
-				<option>请选择</option>
+				<option value="-1">请选择</option>
 			</select>
 		</div>
 		<div class="form-group">
@@ -84,35 +89,8 @@
 	<script type="text/javascript">
 	//发布文章
 	function publish(){
-		 var formData = new FormData($( "#form1" )[0]);
-		 //获取带html样式的文章内容,并封装到formData
-		 formData.set("content",editor1.html());
-		 $.ajax({
-			 type:"post",
-			 url:"/my/publish",
-			 data : formData,
-			// 告诉jQuery不要去处理发送的数据
-			 processData : false,
-			 // 告诉jQuery不要去设置Content-Type请求头
-			 contentType : false,
-			 success:function(flag){
-				 if(flag){
-					 alert("发布成功");
-					 location.href="/my"
-				 }else{
-					 alert("发布失败,试试重新登录后再发布")
-				 }
-			 }
-			 
-			 
-			 
-		 })
-		
-		
+		$("#form1").submit();
 	}
-	
-	
-	
 	
 	
 	
@@ -146,6 +124,98 @@
 	  
   })
  
+  
+	//jquery前端验证
+	$(function(){
+		$("#form1").validate({
+			rules:{
+				
+				title:{
+					required:true,
+				},
+				channelId:{
+					min:1,
+				},
+				categoryId:{
+					min:1,
+				}
+			},
+			messages:{
+				
+				title:{
+					required:"标题不能为空",
+				},
+				channelId:{
+					min:"请选择栏目",
+				},categoryId:{
+					min:"请选择分类",
+				}
+			},submitHandler: function(form) {
+				
+				 var formData = new FormData($( "#form1" )[0]);
+				 //获取带html样式的文章内容,并封装到formData
+				 formData.set("content",editor1.html());
+				 $.ajax({
+					 type:"post",
+					 url:"/my/publish",
+					 data : formData,
+					// 告诉jQuery不要去处理发送的数据
+					 processData : false,
+					 // 告诉jQuery不要去设置Content-Type请求头
+					 contentType : false,
+					 success:function(flag){
+						 if(flag){
+							 alert("发布成功");
+							 location.href="/my"
+						 }else{
+							 alert("发布失败,试试重新登录后再发布")
+						 }
+					 }
+					 
+				 })
+				
+				
+				
+				
+			}
+			
+			
+			
+		})
+		
+		
+	})
+  
+  
+	//jquery前端验证
+	$(function(){
+		$("#form1").validate({
+			rules:{
+				
+				title:{
+					required:true,
+				},
+				password:{
+					required:true,
+				}
+			},
+			messages:{
+				
+				title:{
+					required:"标题不能为空",
+				},
+				password:{
+					required:"密码不能为空",
+				}
+			}
+			
+			
+			
+		})
+		
+		
+	})
+	
  
  </script>
 </body>

@@ -11,13 +11,18 @@
 
 </head>
 <body>
+<!-- top -->
+	<div>
+		<jsp:include page="/WEB-INF/view/common/top.jsp"></jsp:include>
+	</div>
 	<div class="container">
 
 		<dl>
 			<!-- 标题 -->
 			<dt>
-				<h2 align="center">${article.title }</h2>
+				<h2 align="center"><strong>${article.title }</strong></h2>
 			</dt>
+			<hr>
 			<!-- 内容 -->
 			<dd>${article.user.username } &nbsp; <fmt:formatDate value="${article.created }" pattern="yyyy-MM-dd HH:mm:ss"/></dd>
 			<dd>${article.content }</dd>

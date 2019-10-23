@@ -19,6 +19,7 @@ import com.bobo.cms.service.ArticleService;
 import com.bobo.cms.service.CategoryService;
 import com.bobo.cms.service.ChannelService;
 import com.bobo.cms.util.PageUtil;
+import com.bobo.common.utils.DateUtil;
 import com.github.pagehelper.PageInfo;
 
 /**
@@ -90,6 +91,26 @@ public class IndexController {
 		}
 		//封装查询条件
 		model.addAttribute("article", article);
+		
+		
+		//5.24小时热文
+		
+		Article article2 = new Article();
+		article2.setHot(1);
+		article2.setCreated(DateUtil.getDateByBefore());//24小时之前的时间
+		
+		PageInfo<Article> info = articleService.selects(article2, 1, 100);
+		//封装查询结果集
+		model.addAttribute("article24", info.getList());
+		
+		//6.最新文章
+		Article article3 = new Article();
+		article3.setStatus(1);//显示审过的文章
+		
+		PageInfo<Article> info2 = articleService.selects(article3, 1, 10);
+		//封装查询结果集
+		model.addAttribute("articlehot", info2.getList());
+		
 		return "index/index";
 		
 	}

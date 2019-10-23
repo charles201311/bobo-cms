@@ -69,24 +69,11 @@
 
 </div>
 
+<div class="modal-dialog" id="test">
+aaaa
 
-<div id="myAlert" class="alert alert-success">
-    <a href="#" class="close" data-dismiss="alert">&times;</a>
-    <strong>成功！</strong>结果是成功的。
 </div>
-<div id="myAlert2" class="alert alert-warning">
-    <a href="#" class="close" data-dismiss="alert">&times;</a>
-    <strong>警告！</strong>您的网络连接有问题。
-</div>
- 
-<script>
-$(function(){
-    $(".close").click(function(){
-      //  $("#myAlert").alert();
-      //  $("#myAlert2").alert();
-    });
-});
-</script>
+
 
 <script type="text/javascript">
 		
@@ -101,9 +88,7 @@ function update(id,obj){
 	
 	$.post("/admin/updateUser",{id:id,locked:locked},function(flag){
 		if(flag){
-			alert(0)
-			$("#aaa").alert()
-	
+			 $("#test").modal();
 			//改变按钮的内容
 			$(obj).text(locked==1?"停用":"正常");
 			//改变按钮的样式

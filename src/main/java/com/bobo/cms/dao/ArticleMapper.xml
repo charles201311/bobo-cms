@@ -62,6 +62,13 @@
      <if test="hot!=null">
       and  hot  =#{hot}
      </if>
+     
+     <!-- 24小时内热文 -->
+     <if test="created!=null">
+      and   created between #{created} and now()
+     
+     
+     </if>
   
   </where>
   

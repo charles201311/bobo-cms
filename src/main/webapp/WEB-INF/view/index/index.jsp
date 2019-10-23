@@ -8,12 +8,12 @@
 <meta charset="UTF-8">
 <title>cms系统</title>
 <body>
-<!-- top -->
-		<div>
-			<jsp:include page="/WEB-INF/view/common/top.jsp"></jsp:include>
-		</div>
+	<!-- top -->
+	<div>
+		<jsp:include page="/WEB-INF/view/common/top.jsp"></jsp:include>
+	</div>
 	<div class="container">
-		
+
 		<br>
 		<!-- 主体 -->
 		<div class="row">
@@ -56,21 +56,21 @@
 										<img src="/pic/1.jpg" class="d-block w-100" alt="...">
 										<div class="carousel-caption d-none d-md-block">
 											<h5>图片一</h5>
-											
+
 										</div>
 									</div>
 									<div class="carousel-item">
 										<img src="/pic/2.jpg" class="d-block w-100" alt="...">
 										<div class="carousel-caption d-none d-md-block">
 											<h5>图片二一</h5>
-											
+
 										</div>
 									</div>
 									<div class="carousel-item">
 										<img src="/pic/3.jpg" class="d-block w-100" alt="...">
 										<div class="carousel-caption d-none d-md-block">
 											<h5>图片三</h5>
-											
+
 										</div>
 									</div>
 								</div>
@@ -95,9 +95,10 @@
 
 						<c:forEach items="${hotArticles}" var="a">
 							<div class="media">
-								<img src="/pic/${a.picture }" class="mr-3" alt="..." style="width: 190px;height:124px ">
+								<img src="/pic/${a.picture }" class="mr-3" alt="..."
+									style="width: 190px; height: 124px">
 								<div class="media-body ">
-									<h5 class="mt-0 ">
+									<h5 class="mt-0 " style="height: 100px">
 										<a href="/select?id=${a.id }" target="blank">${a.title }</a>
 									</h5>
 									<h5 class="mt-0 myposition">${a.user.username }
@@ -134,9 +135,10 @@
 						<hr>
 						<c:forEach items="${articles}" var="a">
 							<div class="media">
-								<img src="/pic/${a.picture }" class="mr-3" alt="..." style="width: 190px;height:124px ">
+								<img src="/pic/${a.picture }" class="mr-3" alt="..."
+									style="width: 190px; height: 124px">
 								<div class="media-body ">
-									<h5 class="mt-0 ">
+									<h5 class="mt-0 " style="height: 100px">
 										<a href="/select?id=${a.id }" target="blank">${a.title }</a>
 									</h5>
 									<h5 class="mt-0 myposition">${a.user.username }
@@ -156,7 +158,59 @@
 			</div>
 
 			<!-- 右侧边栏 -->
-			<div class="col-md-3 split min_h_500">右侧边栏</div>
+			<div class="col-md-3 split min_h_500">
+
+
+
+				<!-- 24小时热文 -->
+				<div>
+					<div class="card" style="width: 18rem;">
+						<div class="card-header">
+							<strong>24小时热文</strong>
+						</div>
+						<div class="card-body">
+							<c:forEach items="${article24 }" var="a">
+								<div class="media">
+									<img src="/pic/${a.picture }" class="mr-3" alt="..."
+										width="60px" height="60px">
+									<div class="media-body">
+										<h6>
+											<a href="/select?id=${a.id }" target="blank">${a.title }</a>
+										</h6>
+									</div>
+								</div>
+								<br>
+							</c:forEach>
+
+						</div>
+					</div>
+				</div>
+            <!--  最新文章 -->
+				<div>
+					<div class="card" style="width: 18rem;">
+						<div class="card-header">
+							<strong> 最新文章</strong>
+						</div>
+						<div class="card-body">
+							<c:forEach items="${articlehot }" var="a">
+								<div class="media">
+									<img src="/pic/${a.picture }" class="mr-3" alt="..."
+										width="60px" height="60px">
+									<div class="media-body">
+										<h6>
+											<a href="/select?id=${a.id }" target="blank">${a.title }</a>
+										</h6>
+									</div>
+								</div>
+								<br>
+							</c:forEach>
+
+						</div>
+					</div>
+				</div>
+
+
+			</div>
 		</div>
 
 
