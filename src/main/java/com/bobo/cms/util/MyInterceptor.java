@@ -10,8 +10,8 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
  * 
  * @ClassName:
  * @Description: 个人中心后台拦截器
- * @author: charles
- * @date: 2019年10月22日 上午9:58:13
+ * @author: bobo
+ * @date: 2019年10月日 上午9:58:13
  */
 public class MyInterceptor extends HandlerInterceptorAdapter {
 

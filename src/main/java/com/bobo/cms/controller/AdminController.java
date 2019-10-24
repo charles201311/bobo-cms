@@ -21,8 +21,8 @@ import com.github.pagehelper.PageInfo;
  * 
  * @ClassName: AdminController 
  * @Description: 管理员后台
- * @author: charles
- * @date: 2019年10月15日 下午4:04:22
+ * @author: bobo
+ * @date: 2019年10月15日 下午4:04:
  */
 @RequestMapping("admin")
 @Controller
@@ -65,12 +65,14 @@ public class AdminController {
 		if(article.getStatus()==null)
 		 article.setStatus(0);//待审
 		
-		PageInfo<Article> info = articleService.selects(article, page, pageSize);
+		PageInfo<ArticleWithBLOBs> info = articleService.selects(article, page, pageSize);
 		//调用分页工具
 		String pages = PageUtil.page(page, info.getPages(), "/admin/articles?title="+article.getTitle()+"&status="+article.getStatus(), pageSize);
 		model.addAttribute("articles", info.getList());
 		model.addAttribute("article", article);
 		model.addAttribute("pages", pages);
+		model.addAttribute("info", info);
+		
 		return "admin/articles";
 		
 	}

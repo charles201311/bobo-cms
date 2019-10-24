@@ -76,7 +76,7 @@ Class AnUpLoad
 		set Form = server.createobject("Scripting.Dictionary")
 		set Fils = server.createobject("Scripting.Dictionary")
 		Set StreamT = server.CreateObject("Adodb.stream")
-		vVersion = "艾恩ASP无组件上传类V10.10.22"
+		vVersion = "艾恩ASP无组件上传类V10.10."
 		vMaxSize = -1
 		vSingleSize = -1
 		vErr = -1

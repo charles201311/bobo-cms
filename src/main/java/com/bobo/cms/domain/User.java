@@ -10,7 +10,7 @@ public class User implements Serializable{
 	 * @fieldType: long
 	 * @Description: TODO
 	 */
-	private static final long serialVersionUID = 3462241154491900808L;
+	private static final long serialVersionUID = 34641154491900808L;
 
 	/**
 	 * @fieldName: serialVersionUID

@@ -7,7 +7,7 @@ import com.bobo.cms.domain.Channel;
  * 
  * @ClassName: ChannelMapper 
  * @Description: 栏目
- * @author: charles
+ * @author: bobo
  * @date: 2019年10月18日 上午10:24:45
  */
 public interface ChannelMapper {

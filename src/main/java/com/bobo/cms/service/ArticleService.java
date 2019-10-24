@@ -17,7 +17,7 @@ public interface ArticleService {
 	 * @return
 	 * @return: List<Article>
 	 */
-	PageInfo<Article> selects(Article article,Integer page,Integer pageSize);
+	PageInfo<ArticleWithBLOBs> selects(Article article,Integer page,Integer pageSize);
 	
 	
     int deleteByPrimaryKey(Integer id);

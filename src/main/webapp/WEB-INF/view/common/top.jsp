@@ -17,7 +17,7 @@
 	
 <div class="container-fulid">
 	<nav class="navbar navbar-light bg-light">
-		<a class="navbar-brand" href="/" title="CMS"><img alt="CMS"
+		<a class="navbar-brand" href="/" title="cms"><img alt="cms"
 			src="/resource/images/logo.png"></a>
 
 		<!-- 搜索框：在专业高级二学完ElasticSearch后实现 -->
@@ -46,7 +46,7 @@
 							<a href="#" class="nav-link dropdown-toggle" role="button"
 								id="dropdownMenuButton" data-toggle="dropdown"
 								aria-haspopup="true" aria-expanded="false"> <c:out
-									value="${user.username}" default="CMS-User" />
+									value="${user.username}" default="cms-User" />
 							</a>
 							<div class="dropdown-menu dropdown-menu-left"
 								aria-labelledby="dropdownMenuButton">

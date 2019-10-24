@@ -8,7 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * 
  * @ClassName: UserServiceImplTest 
  * @Description: 启动spring容器
- * @author: charles
+ * @author: bobo
  * @date: 2019年10月15日 下午4:01:19
  */
 @RunWith(SpringJUnit4ClassRunner.class)

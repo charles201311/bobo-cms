@@ -355,7 +355,7 @@ SWFUpload.QUEUE_ERROR = {
 SWFUpload.UPLOAD_ERROR = {
 	HTTP_ERROR				  		: -200,
 	MISSING_UPLOAD_URL	      		: -210,
-	IO_ERROR				  		: -220,
+	IO_ERROR				  		: -0,
 	SECURITY_ERROR			  		: -230,
 	UPLOAD_LIMIT_EXCEEDED	  		: -240,
 	UPLOAD_FAILED			  		: -250,

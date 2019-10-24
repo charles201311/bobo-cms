@@ -104,7 +104,7 @@
 	height: 16px;
 }
 .ke-icon-insertunorderedlist {
-	background-position: 0px -224px;
+	background-position: 0px -4px;
 	width: 16px;
 	height: 16px;
 }
@@ -533,7 +533,7 @@
 .ke-menu {
 	border: 1px solid #A0A0A0;
 	background-color: #F1F1F1;
-	color: #222222;
+	color: #;
 	padding: 2px;
 	font-family: "sans serif",tahoma,verdana,helvetica;
 	font-size: 12px;
@@ -543,7 +543,7 @@
 .ke-menu-item {
 	border: 1px solid #F1F1F1;
 	background-color: #F1F1F1;
-	color: #222222;
+	color: #;
 	height: 24px;
 	overflow: hidden;
 	cursor: pointer;
@@ -589,7 +589,7 @@
 .ke-colorpicker {
 	border: 1px solid #A0A0A0;
 	background-color: #F1F1F1;
-	color: #222222;
+	color: #;
 	padding: 2px;
 }
 .ke-colorpicker-table {
@@ -681,7 +681,7 @@
 	height: 24px;
 	font: 12px/24px "sans serif",tahoma,verdana,helvetica;
 	text-align: left;
-	color: #222;
+	color: #2;
 	cursor: move;
 }
 .ke-dialog-icon-close {

@@ -2,6 +2,9 @@ package com.bobo.cms.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
+import com.bobo.cms.vo.ArticleVO;
 
 public class Article  implements Serializable{
     /**
@@ -25,6 +28,10 @@ public class Article  implements Serializable{
     
     private User user;//文章发布人
     
+    private List<ArticleVO> voList;//图片集
+    
+    
+    
 
     private Integer hits;
 
@@ -37,9 +44,28 @@ public class Article  implements Serializable{
     private Date created;
 
     private Date updated;
+    
+    private Integer contentType;
+    
   
 
-    public Integer getId() {
+	public Integer getContentType() {
+		return contentType;
+	}
+
+	public void setContentType(Integer contentType) {
+		this.contentType = contentType;
+	}
+
+	public List<ArticleVO> getVoList() {
+		return voList;
+	}
+
+	public void setVoList(List<ArticleVO> voList) {
+		this.voList = voList;
+	}
+
+	public Integer getId() {
         return id;
     }
 

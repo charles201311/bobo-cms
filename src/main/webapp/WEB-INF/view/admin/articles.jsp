@@ -23,16 +23,13 @@
 		<div class="form-group form-inline">
 			<label for="title">文章标题:</label> <input id="title" type="text"
 				class="form-control" name="title" value="${article.title }">
-			&nbsp;
-			文章状态:
-			<select name="status" class="form-control" id="status">
-			
-			 <option value="0">待审</option>
-			 <option value="1">已审</option>
-			 <option value="-1">驳回</option>
-			
-			</select>
-				&nbsp;
+			&nbsp; 文章状态: <select name="status" class="form-control" id="status">
+
+				<option value="0">待审</option>
+				<option value="1">已审</option>
+				<option value="-1">驳回</option>
+
+			</select> &nbsp;
 			<button class="btn btn-success btn-sm" type="button"
 				onclick="query()">查询</button>
 		</div>
@@ -58,9 +55,9 @@
 					<td>${a.user.nickname }</td>
 					<td><fmt:formatDate value="${a.created }"
 							pattern="yyyy-MM-dd HH:mm:ss" /></td>
-						<td>${a.status==0?"待审":a.status==1?"已审":"驳回" }</td>
+					<td>${a.status==0?"待审":a.status==1?"已审":"驳回" }</td>
 					<td>${a.hits}</td>
-					
+
 					<td><c:if test="${a.hot==0 }">
 							<button class="btn btn-success" onclick="update(${a.id},this)">否</button>
 						</c:if> <c:if test="${a.hot==1 }">
@@ -72,12 +69,24 @@
 
 
 		</table>
-		
-		<div>${pages }</div>
-	
-</div>
-<script type="text/javascript">
 
+		<div>${pages }</div>
+		<div class="modal-dialog" role="document">
+			
+		</div>
+		
+		<div>
+		
+		 <button id="btn_add" type="button">test</button>
+		</div>
+
+	</div>
+	<script type="text/javascript">
+	$("#btn_add").click(function () {
+		     $("#myModalLabel").text("新增");
+	         $('#myModal').modal();
+		 });
+	
  //文章详情
  function detail(id){
 
@@ -94,7 +103,9 @@ function update(id,obj){
 	
 	$.post("/admin/updateArticle",{id:id,hot:hot},function(flag){
 		if(flag){
-	
+			$('#myAlert').on('closed.bs.alert', function () {
+				alert("aaa")
+				})
 			//改变按钮的内容
 			$(obj).text(hot==1?"是":"否");
 			//改变按钮的样式
@@ -123,6 +134,7 @@ function query(){
 	$("#content-wrapper").load("/admin/articles?title="+$("[name='title']").val()+"&status="+$("[name='status']").val());
 }
 
+	
 </script>
 </body>
 </html>

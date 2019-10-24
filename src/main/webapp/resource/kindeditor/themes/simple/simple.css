@@ -48,7 +48,7 @@
 .ke-menu-simple {
 	border: 1px solid #A0A0A0;
 	background-color: #FFF;
-	color: #222222;
+	color: #;
 	padding: 2px;
 	font-family: "sans serif",tahoma,verdana,helvetica;
 	font-size: 12px;
@@ -58,7 +58,7 @@
 .ke-menu-simple .ke-menu-item {
 	border: 1px solid #FFF;
 	background-color: #FFF;
-	color: #222222;
+	color: #;
 	height: 24px;
 	overflow: hidden;
 	cursor: pointer;
@@ -71,7 +71,7 @@
 .ke-colorpicker-simple {
 	border: 1px solid #A0A0A0;
 	background-color: #FEFEFE;
-	color: #222222;
+	color: #;
 	padding: 2px;
 }
 .ke-colorpicker-simple .ke-colorpicker-cell {

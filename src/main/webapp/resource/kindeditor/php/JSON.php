@@ -280,7 +280,7 @@ class Services_JSON
                             $ascii .= '\r';
                             break;
 
-                        case $ord_var_c == 0x22:
+                        case $ord_var_c == 0x:
                         case $ord_var_c == 0x2F:
                         case $ord_var_c == 0x5C:
                             // double quote, slash, slosh

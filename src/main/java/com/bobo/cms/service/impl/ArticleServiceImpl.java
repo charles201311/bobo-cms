@@ -19,12 +19,12 @@ public class ArticleServiceImpl implements ArticleService {
 	private ArticleMapper articleMapper;
 
 	@Override
-	public PageInfo<Article> selects(Article article,Integer page,Integer pageSize) {
+	public PageInfo<ArticleWithBLOBs> selects(Article article,Integer page,Integer pageSize) {
 		PageHelper.startPage(page, pageSize);
 		
-		List<Article> list = articleMapper.selects(article);
+		List<ArticleWithBLOBs> list = articleMapper.selects(article);
 		
-		return new PageInfo<Article>(list);
+		return new PageInfo<ArticleWithBLOBs>(list);
 	}
 
 	@Override

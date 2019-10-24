@@ -14,7 +14,7 @@ public interface ArticleMapper {
 	 * @return
 	 * @return: List<Article>
 	 */
-	List<Article> selects(Article article);
+	List<ArticleWithBLOBs> selects(Article article);
 	
 	
     int deleteByPrimaryKey(Integer id);

@@ -18,15 +18,19 @@ import com.bobo.cms.domain.Channel;
 import com.bobo.cms.service.ArticleService;
 import com.bobo.cms.service.CategoryService;
 import com.bobo.cms.service.ChannelService;
+import com.bobo.cms.util.ArticleEnum;
 import com.bobo.cms.util.PageUtil;
 import com.bobo.common.utils.DateUtil;
 import com.github.pagehelper.PageInfo;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
 /**
  * 
  * @ClassName: IndecController 
  * @Description: cms首页
- * @author: charles
+ * @author: bobo
  * @date: 2019年10月18日 上午10:18:37
  */
 
@@ -63,7 +67,7 @@ public class IndexController {
 		  
 		//3. 如果栏目不为空,并且分类也不为空则查询分类下的文章
 		//	if(null!=article.getCategoryId()) {
-				PageInfo<Article> info = articleService.selects(article, page, pageSize);
+				PageInfo<ArticleWithBLOBs> info = articleService.selects(article, page, pageSize);
 				
 				String url="/?channelId="+article.getChannelId();
 				if(null!=article.getCategoryId()) {
@@ -84,7 +88,7 @@ public class IndexController {
 		if(null==article.getChannelId()) {
 			
 			article.setHot(1);//热点文章
-			PageInfo<Article> info = articleService.selects(article, page, pageSize);
+			PageInfo<ArticleWithBLOBs> info = articleService.selects(article, page, pageSize);
             String pages = PageUtil.page(page, info.getPages(), "/", pageSize);
 			model.addAttribute("hotArticles", info.getList());
 			model.addAttribute("pages", pages);
@@ -99,7 +103,7 @@ public class IndexController {
 		article2.setHot(1);
 		article2.setCreated(DateUtil.getDateByBefore());//24小时之前的时间
 		
-		PageInfo<Article> info = articleService.selects(article2, 1, 100);
+		PageInfo<ArticleWithBLOBs> info = articleService.selects(article2, 1, 100);
 		//封装查询结果集
 		model.addAttribute("article24", info.getList());
 		
@@ -107,9 +111,24 @@ public class IndexController {
 		Article article3 = new Article();
 		article3.setStatus(1);//显示审过的文章
 		
-		PageInfo<Article> info2 = articleService.selects(article3, 1, 10);
+		PageInfo<ArticleWithBLOBs> info2 = articleService.selects(article3, 1, 10);
 		//封装查询结果集
 		model.addAttribute("articlehot", info2.getList());
+		
+		//图片集
+		//6.最新文章
+				Article article4 = new Article();
+				article4.setStatus(1);//显示审过的文章
+				article4.setContentType(ArticleEnum.IMAGE.getCode());
+				
+				
+				
+				
+				PageInfo<ArticleWithBLOBs> info4 = articleService.selects(article4, 1, 10);
+			
+				
+				//封装查询结果集
+				model.addAttribute("articlepics", info4.getList());
 		
 		return "index/index";
 		

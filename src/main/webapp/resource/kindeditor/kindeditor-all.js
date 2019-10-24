@@ -317,7 +317,7 @@ K.options = {
 
 var _useCapture = false;
 
-var _INPUT_KEY_MAP = _toMap('8,9,13,32,46,48..57,59,61,65..90,106,109..111,188,190..192,219..222');
+var _INPUT_KEY_MAP = _toMap('8,9,13,32,46,48..57,59,61,65..90,106,109..111,188,190..192,219..2');
 var _CURSORMOVE_KEY_MAP = _toMap('33..40');
 var _CHANGE_KEY_MAP = {};
 _each(_INPUT_KEY_MAP, function(key, val) {
@@ -8155,7 +8155,7 @@ SWFUpload.QUEUE_ERROR = {
 SWFUpload.UPLOAD_ERROR = {
 	HTTP_ERROR				  		: -200,
 	MISSING_UPLOAD_URL	      		: -210,
-	IO_ERROR				  		: -220,
+	IO_ERROR				  		: -0,
 	SECURITY_ERROR			  		: -230,
 	UPLOAD_LIMIT_EXCEEDED	  		: -240,
 	UPLOAD_FAILED			  		: -250,

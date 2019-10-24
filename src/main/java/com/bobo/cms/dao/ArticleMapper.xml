@@ -14,7 +14,7 @@
     <result column="deleted" property="deleted" jdbcType="INTEGER" />
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
-    
+      <result column="content_type" property="contentType" jdbcType="TIMESTAMP" />
     <!-- 一对一关系 -->
     <association property="user" javaType="user" select="com.bobo.cms.dao.UserMapper.selectByPrimaryKey" column="user_id"></association>
     
@@ -33,7 +33,7 @@
   
   
   
-  <select id="selects" resultMap="BaseResultMap">
+  <select id="selects" resultMap="ResultMapWithBLOBs">
   
   select * from cms_article 
   <where>
@@ -56,6 +56,10 @@
      <!-- 按照作者查询 -->
       <if test="userId!=null">
       and  user_id  =#{userId}
+     </if>
+     
+     <if test="contentType!=null">
+      and  content_type  =#{contentType}
      </if>
      
        <!-- 热门文章查询-->
