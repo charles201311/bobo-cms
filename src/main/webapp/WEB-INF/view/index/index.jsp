@@ -84,6 +84,8 @@
 									<span class="sr-only">Next</span>
 								</a>
 							</div>
+					
+					
 						</div>
 
 
@@ -159,12 +161,42 @@
 
 			<!-- 右侧边栏 -->
 			<div class="col-md-3 split min_h_500">
+			<!-- 专题 -->
+			<div>
+					<div class="card" style="width: 18rem;">
+						<div class="card-header">
+							<strong>专题</strong>
+						</div>
+						<div class="card-body">
+							<c:forEach items="${specialList }" var="s">
+								<div class="media">
+									
+									<div class="media-body">
+										<h3><strong>${s.title }</strong></h3>
+										 <h5>${s.abstracts }</h5>
+										<ul>
+										<c:forEach items="${s.specialArticles}" var="ss">
+									
+										    <li>  <a href="/select?id=${ss.article.id }" target="blank">${ss.article.title }</a></li>
+										    	
+										
+										</c:forEach>
+										</ul>
+									</div>
+								</div>
+								<br>
+								<hr>
+							</c:forEach>
+
+						</div>
+					</div>
+				</div>
 
 	<!-- 图片集 -->
 				<div>
 					<div class="card" style="width: 18rem;">
 						<div class="card-header">
-							<strong>24小时热文</strong>
+							<strong>图片集</strong>
 						</div>
 						<div class="card-body">
 							<c:forEach items="${articlepics }" var="a">
@@ -173,7 +205,7 @@
 										width="60px" height="60px">
 									<div class="media-body">
 										<h6>
-											<a href="/select?id=${a.id }" target="blank">${a.title }</a>
+											<a href="/selectpic?id=${a.id }" target="blank">${a.title }</a>
 										</h6>
 									</div>
 								</div>

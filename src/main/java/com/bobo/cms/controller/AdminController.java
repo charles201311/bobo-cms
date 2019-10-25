@@ -1,5 +1,7 @@
 package com.bobo.cms.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -12,8 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bobo.cms.domain.Article;
 import com.bobo.cms.domain.ArticleWithBLOBs;
+import com.bobo.cms.domain.Special;
 import com.bobo.cms.domain.User;
 import com.bobo.cms.service.ArticleService;
+import com.bobo.cms.service.SpecialService;
 import com.bobo.cms.service.UserService;
 import com.bobo.cms.util.PageUtil;
 import com.github.pagehelper.PageInfo;
@@ -34,6 +38,9 @@ public class AdminController {
 	@Resource
 	private ArticleService articleService;
 	
+	@Resource
+	private SpecialService specialService;
+	
 	/**
 	 * 
 	 * @Title: index 
@@ -47,6 +54,76 @@ public class AdminController {
 		return "admin/index";
 		
 	}
+	/**
+	 * 
+	 * @Title: specials 
+	 * @Description: 专题列表
+	 * @param model
+	 * @return
+	 * @return: String
+	 */
+	@GetMapping("special/selects")
+	public String specials(Model model) {
+		List<Special> list = specialService.selects();
+		model.addAttribute("specials", list);
+		return "admin/specials";
+	}
+	/**
+	 * 
+	 * @Title: add 
+	 * @Description: 增加专题
+	 * @param model
+	 * @return
+	 * @return: String
+	 */
+	@GetMapping("special/add")
+	public String add() {
+		 
+		return "admin/specialsadd";
+	}
+	
+	/**
+	 * 
+	 * @Title: add 
+	 * @Description: 增加专题
+	 * @param model
+	 * @return
+	 * @return: String
+	 */
+	@ResponseBody
+	@PostMapping("special/add")
+	public boolean add(Special special) {
+		
+		return specialService.insert(special)>0;
+	}
+	/**
+	 *  
+	 * @Title: select 
+	 * @Description: 单个专题
+	 * @param model
+	 * @param sid
+	 * @return
+	 * @return: String
+	 */
+	@GetMapping("special/select")
+	public String select(Model model ,Integer sid) {
+		Special special = specialService.select(sid);
+		model.addAttribute("s", special);
+		return "admin/special";
+	}
+	/**
+	 * 
+	 * @Title: addArticle 
+	 * @Description: 为专题增加文章
+	 * @return
+	 * @return: boolean
+	 */
+	@ResponseBody
+	@PostMapping("/special/addArticle")
+	public boolean addArticle(Integer sid,Integer aid) {
+		return specialService.insertSpecialArticle(sid, aid)>0;
+	}
+	
 	/**
 	 *  
 	 * @Title: users 

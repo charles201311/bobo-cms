@@ -6,6 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="keywords" content="${article.keywords}" />
+<meta name="description" content="${article.summary}" />
 <title>${article.title }</title>
 
 
@@ -24,7 +26,11 @@
 			</dt>
 			<hr>
 			<!-- 内容 -->
-			<dd>${article.user.username } &nbsp; <fmt:formatDate value="${article.created }" pattern="yyyy-MM-dd HH:mm:ss"/></dd>
+			<dd>${article.user.username } &nbsp;
+			 <fmt:formatDate value="${article.created }" pattern="yyyy-MM-dd HH:mm:ss"/>
+			 文章来源:${article.original }
+			 </dd>
+			
 			<dd>${article.content }</dd>
 
 		</dl>

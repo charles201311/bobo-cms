@@ -31,9 +31,28 @@ public class Article  implements Serializable{
     private List<ArticleVO> voList;//图片集
     
     
+    private  String original;//文章来源
+    private String keywords;//关键词
+    
     
 
-    private Integer hits;
+    public String getOriginal() {
+		return original;
+	}
+
+	public void setOriginal(String original) {
+		this.original = original;
+	}
+
+	public String getKeywords() {
+		return keywords;
+	}
+
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
+	}
+
+	private Integer hits;
 
     private Integer hot;
 

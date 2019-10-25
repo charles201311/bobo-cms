@@ -60,6 +60,14 @@
 				type="text" name="title" id="title">
 		</div>
 		<div class="form-group">
+			<label for="original"> 文章来源:</label> <input class="form-control"
+				type="text" name="original" id="original">
+		</div>
+		<div class="form-group">
+			<label for="keywords"> 关键词:</label> <input class="form-control"
+				type="text" name="keywords" id="keywords">
+		</div>
+		<div class="form-group">
 			<label for="content"> 文章内容:</label>
 			<textarea rows="10" cols="30" name="content1" id="content"
 				style="width: 825px">

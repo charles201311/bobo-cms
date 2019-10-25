@@ -27,4 +27,7 @@ a{text-align: center;}
 	<li class="nav-item"><a class="nav-link" href="javascript:void(0)" data="/links/selects">
 			<i class="fas fa-fw fa-table"></i> <span>友情链接</span>
 	</a></li>
+		<li class="nav-item"><a class="nav-link" href="javascript:void(0)" data="/admin/special/selects">
+			<i class="fas fa-fw fa-table"></i> <span>文章专题</span>
+	</a></li>
 </ul>

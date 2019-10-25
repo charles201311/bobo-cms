@@ -15,6 +15,8 @@
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
       <result column="content_type" property="contentType" jdbcType="TIMESTAMP" />
+          <result column="keywords" property="keywords" jdbcType="VARCHAR" />
+          <result column="original" property="original" jdbcType="VARCHAR" />
     <!-- 一对一关系 -->
     <association property="user" javaType="user" select="com.bobo.cms.dao.UserMapper.selectByPrimaryKey" column="user_id"></association>
     
@@ -25,7 +27,7 @@
   </resultMap>
   <sql id="Base_Column_List" >
     id, title, picture, channel_id, category_id, user_id, hits, hot, status, deleted, 
-    created, updated
+    created, updated,original,keywords
   </sql>
   <sql id="Blob_Column_List" >
     content, summary
@@ -153,6 +155,15 @@
       <if test="summary != null" >
         summary,
       </if>
+       <if test="contentType!= null" >
+        content_type,
+      </if>
+         <if test="keywords!= null" >
+        keywords,
+      </if>
+         <if test="original!= null" >
+        original,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -197,6 +208,16 @@
       <if test="summary != null" >
         #{summary,jdbcType=LONGVARCHAR},
       </if>
+        <if test="contentType!= null" >
+       #{contentType},
+      </if>
+       <if test="keywords!= null" >
+       #{keywords},
+      </if>
+          <if test="original!= null" >
+       #{original}
+      </if>
+       
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.bobo.cms.domain.ArticleWithBLOBs" >
