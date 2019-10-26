@@ -21,6 +21,10 @@
 <body>
 	<div class="container">
 		<div class="form-group form-inline">
+		
+			<label for="terms">文章标签:</label> <input id="term" type="text"
+				class="form-control" name="terms" value="${article.terms }">
+		
 			<label for="title">文章标题:</label> <input id="title" type="text"
 				class="form-control" name="title" value="${article.title }">
 			&nbsp; 文章状态: <select name="status" class="form-control" id="status">
@@ -45,6 +49,7 @@
 				<td>文章状态</td>
 				<td>点击量</td>
 				<td>是否热门</td>
+				<td>标签</td>
 				<td>操作</td>
 			</tr>
 
@@ -58,13 +63,14 @@
 							pattern="yyyy-MM-dd HH:mm:ss" /></td>
 					<td>${a.status==0?"待审":a.status==1?"已审":"驳回" }</td>
 					<td>${a.hits}</td>
+				
 
 					<td><c:if test="${a.hot==0 }">
 							<button class="btn btn-success" onclick="update(${a.id},this)">否</button>
 						</c:if> <c:if test="${a.hot==1 }">
 							<button class="btn btn-danger" onclick="update(${a.id},this)">是</button>
 						</c:if></td>
-						
+							<td>${a.terms}</td>
 						<td><button class="btn btn-info" onclick="update(${a.id})">修改</button> </td>
 				</tr>
 
@@ -107,7 +113,7 @@ $(function(){
 
 function query(){
 	//在框架的中间区域显示查询
-	$("#center").load("/my/articles?title="+$("[name='title']").val()+"&status="+$("[name='status']").val());
+	$("#center").load("/my/articles?title="+$("[name='title']").val()+"&status="+$("[name='status']").val()+"&terms="+$("[name='terms']").val());
 }
 
 </script>

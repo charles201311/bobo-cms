@@ -24,6 +24,7 @@ import com.bobo.cms.domain.Article;
 import com.bobo.cms.domain.ArticleWithBLOBs;
 import com.bobo.cms.domain.User;
 import com.bobo.cms.service.ArticleService;
+import com.bobo.cms.service.UserService;
 import com.bobo.cms.util.ArticleEnum;
 import com.bobo.cms.util.PageUtil;
 import com.bobo.cms.vo.ArticleVO;
@@ -43,6 +44,8 @@ public class MyController {
 
 	@Resource
 	private ArticleService articleService;
+	@Resource
+	private UserService userService;
 
 	// 进入个人中心首页
 	@RequestMapping(value = { "", "/", "index" })
@@ -50,6 +53,41 @@ public class MyController {
 
 		return "my/index";
 
+	}
+	
+	/**
+	 * 去修改用户信息页面
+	 * @Title: update 
+	 * @Description: TODO
+	 * @param user
+	 * @return
+	 * @return: boolean
+	 */
+	@GetMapping("user/update")
+	public String update(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		if(session==null) {
+			return "redirect:/passport/login";
+		}
+		User user = (User) session.getAttribute("user");
+		User user2 = userService.selectByPrimaryKey(user.getId());
+		request.setAttribute("user", user2);
+		return "my/user";
+	}
+
+	
+	/**
+	 * 修改用户信息
+	 * @Title: update 
+	 * @Description: TODO
+	 * @param user
+	 * @return
+	 * @return: boolean
+	 */
+	@ResponseBody
+	@PostMapping("user/update")
+	public boolean update(User user) {
+		return userService.updateByPrimaryKeySelective(user)>0;
 	}
 
 	/**
@@ -260,6 +298,7 @@ public class MyController {
 		article.setHot(0);// 默认非热门
 		article.setCreated(new Date());
 		article.setUpdated(new Date());
+		article.setContentType(ArticleEnum.HTML.getCode());//文章类型
 		// 保存文章
 		return articleService.insertSelective(article) > 0;
 

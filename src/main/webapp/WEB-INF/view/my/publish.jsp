@@ -59,6 +59,11 @@
 			<label for="title"> 文章标题:</label> <input class="form-control"
 				type="text" name="title" id="title">
 		</div>
+		
+			<div class="form-group">
+			<label for="terms"> 文章标签:</label> <input class="form-control"
+				type="text" name="terms" id="terms">
+		</div>
 		<div class="form-group">
 			<label for="original"> 文章来源:</label> <input class="form-control"
 				type="text" name="original" id="original">

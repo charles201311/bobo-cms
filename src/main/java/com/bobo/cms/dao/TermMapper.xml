@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bobo.cms.dao.TermMapper" >
+  <resultMap id="BaseResultMap" type="term" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="display_name" property="displayName" jdbcType="VARCHAR" />
+    <result column="unique_name" property="uniqueName" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  
+  <select id="selectByName" resultMap="BaseResultMap">
+  
+  select * from cms_term where unique_name=#{name}
+  
+  </select>
+  
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="id">
+  insert into cms_term(display_name,unique_name) values(#{displayName},#{uniqueName})
+  
+  
+  </insert>
+ 
+ 
+ <insert id="insertArticleTerm">
+ insert into cms_article_term(aid,tid) values(#{aid},#{tid})
+ 
+ 
+ </insert>
+</mapper>

@@ -60,6 +60,8 @@ public class UserServiceImpl implements UserService {
 		if (!(userVO.getPassword().equals(userVO.getRepassword()))) {
 			throw new CMSException("两次密码不一致");
 		}
+		
+		
 
 		//对密码进行加密
 		userVO.setPassword(Md5Util.md5Encoding(userVO.getPassword()));
@@ -101,11 +103,14 @@ public class UserServiceImpl implements UserService {
 		if(null==u) {
 			throw new CMSException("无此用户");
 		}
+		
 		//比较密码
 		if(!(u.getPassword().equals(Md5Util.md5Encoding(user.getPassword())))) {
 			throw new CMSException("密码不正确");
 		}
-		
+		if ((u.getLocked()==1)) {
+			throw new CMSException("用户被停用");
+		}
 		return u;
 	}
 

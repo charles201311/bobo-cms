@@ -38,8 +38,19 @@ public class User implements Serializable{
     private Date updated;
 
     private String role;
+    
+    private String url;//博客地址
+    
 
-    public Integer getId() {
+    public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public Integer getId() {
         return id;
     }
 

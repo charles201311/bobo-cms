@@ -198,7 +198,7 @@ public class IndexController {
 			
 				model.addAttribute("specialList", list);
 				for (Special special : list) {
-					System.out.println(special.getSpecialArticles());
+					System.out.println(special);
 				}
 
 			}

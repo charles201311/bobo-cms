@@ -69,10 +69,7 @@
 
 </div>
 
-<div class="modal-dialog" id="test">
-aaaa
 
-</div>
 
 
 <script type="text/javascript">
