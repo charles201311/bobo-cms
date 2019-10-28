@@ -11,12 +11,7 @@
 <title></title>
 <!-- 视窗 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- 引入  css -->
-<link rel="stylesheet" href="/resource/css/bootstrap.min.css">
-<!-- 后台页面样式模板 -->
-<link rel="stylesheet" href="/resource/css/sb-admin.css">
-<link rel="stylesheet" href="/resource/css/all.min.css">
-<script type="text/javascript" src="/resource/js/cms.js"></script>
+
 </head>
 <body>
 	<div class="container">

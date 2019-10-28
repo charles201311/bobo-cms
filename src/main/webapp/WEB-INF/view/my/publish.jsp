@@ -106,8 +106,9 @@
 	}
 	
 	
+	//初始化下拉框
+ function init(){
 	
-  $(function(){
 	  //文档就绪时加载文章栏目
 	  $.get("/channel/channels",function(channel){
 		for(var i in channel){
@@ -132,14 +133,11 @@
 		})
 		
 	  })
-	  
-	  //
-	  
-  })
- 
+ }
   
 	//jquery前端验证
 	$(function(){
+		init();//
 		$("#form1").validate({
 			rules:{
 				
@@ -200,34 +198,6 @@
 	})
   
   
-	//jquery前端验证
-	$(function(){
-		$("#form1").validate({
-			rules:{
-				
-				title:{
-					required:true,
-				},
-				password:{
-					required:true,
-				}
-			},
-			messages:{
-				
-				title:{
-					required:"标题不能为空",
-				},
-				password:{
-					required:"密码不能为空",
-				}
-			}
-			
-			
-			
-		})
-		
-		
-	})
 	
  
  </script>

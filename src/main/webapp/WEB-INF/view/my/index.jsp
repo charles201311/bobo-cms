@@ -52,8 +52,10 @@
 	 //页面加载时让为左侧菜单默认点击 我的文章
 	  
 	// $("#myArticle").click();
-     $("#center").load("/my/articles")
+    $("#center").load("/my/articles")
 	 
+     
+    
 	 $(".channel").click(function(){
 
 		 var li =$("ul li");
@@ -61,9 +63,6 @@
 		li.removeClass("list-group-item-info");
 		//为左侧菜单添加动态点击样式 
 		$(this).parent().addClass("list-group-item-info");
-		 
-		 
-		 
 		 var url =$(this).attr("data");
 		 $("#center").load(url);
 	 })

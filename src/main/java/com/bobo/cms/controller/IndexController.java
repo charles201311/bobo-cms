@@ -49,6 +49,7 @@ public class IndexController {
 	private ArticleService articleService;
 	@Resource
 	private SpecialService specialService;
+
 	/**
 	 * 
 	 * @Title: index
@@ -77,7 +78,7 @@ public class IndexController {
 		Thread t7 = null;
 
 		// 1.显示左侧栏目
-		//定义线程
+		// 定义线程
 		t1 = new Thread(new Runnable() {
 
 			@Override
@@ -188,14 +189,14 @@ public class IndexController {
 
 			}
 		});
-		
-		//专题
+
+		// 专题
 		t7 = new Thread(new Runnable() {
 
 			@Override
 			public void run() {
 				List<Special> list = specialService.selects();
-			
+
 				model.addAttribute("specialList", list);
 				for (Special special : list) {
 					System.out.println(special);
@@ -203,10 +204,8 @@ public class IndexController {
 
 			}
 		});
-		
-		
-		
-		//启动线程
+
+		// 启动线程
 		t1.start();
 		t2.start();
 		t3.start();
@@ -214,9 +213,9 @@ public class IndexController {
 		t5.start();
 		t6.start();
 		t7.start();
-		
+
 		try {
-			//让子线程都执行完,在执行主线程
+			// 让子线程都执行完,在执行主线程
 			t1.join();
 			t2.join();
 			t3.join();
@@ -225,7 +224,7 @@ public class IndexController {
 			t6.join();
 			t7.join();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 
