@@ -30,7 +30,7 @@ public class MyInterceptor extends HandlerInterceptorAdapter {
 		}
 		// 没有登录.则转发到登录页面
 
-		request.setAttribute("error", "请登陆后再试");
+		request.setAttribute("message", "请登陆后再试");
 		request.getRequestDispatcher("/WEB-INF/view/passport/login.jsp").forward(request, response);
 
 		return false;

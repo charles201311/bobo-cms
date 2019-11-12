@@ -101,7 +101,7 @@
 									style="width: 190px; height: 124px">
 								<div class="media-body ">
 									<h5 class="mt-0 " style="height: 100px">
-										<a href="/select?id=${a.id }" target="blank">${a.title }</a>
+										<a href="/select?id=${a.id }" target="_blank">${a.title }</a>
 									</h5>
 									<h5 class="mt-0 myposition">${a.user.username }
 										&nbsp;
@@ -141,7 +141,7 @@
 									style="width: 190px; height: 124px">
 								<div class="media-body ">
 									<h5 class="mt-0 " style="height: 100px">
-										<a href="/select?id=${a.id }" target="blank">${a.title }</a>
+										<a href="/select?id=${a.id }" target="_blank">${a.title }</a>
 									</h5>
 									<h5 class="mt-0 myposition">${a.user.username }
 										&nbsp;
@@ -161,6 +161,29 @@
 
 			<!-- 右侧边栏 -->
 			<div class="col-md-3 split min_h_500">
+			 <!--  最新文章 -->
+				<div>
+					<div class="card" style="width: 18rem;">
+						<div class="card-header">
+							<strong> 最新文章</strong>
+						</div>
+						<div class="card-body">
+							<c:forEach items="${articlehot }" var="a">
+								<div class="media">
+									<img src="/pic/${a.picture }" class="mr-3" alt="..."
+										width="60px" height="60px">
+									<div class="media-body">
+										<h6>
+											<a href="/select?id=${a.id }" target="_blank">${a.title }</a>
+										</h6>
+									</div>
+								</div>
+								<br>
+							</c:forEach>
+
+						</div>
+					</div>
+				</div>
 			<!-- 专题 -->
 			<div>
 					<div class="card" style="width: 18rem;">
@@ -170,16 +193,13 @@
 						<div class="card-body">
 							<c:forEach items="${specialList }" var="s">
 								<div class="media">
-									
 									<div class="media-body">
-										<h3><strong>${s.title }</strong></h3>
-										 <h5>${s.abstracts }</h5>
+										<h4><strong>${s.title }</strong></h4>
+										 <h5 align="center">${s.abstracts }</h5>
+										 <br>
 										<ul>
 										<c:forEach items="${s.specialArticles}" var="ss">
-									
-										    <li>  <a href="/select?id=${ss.article.id }" target="blank">${ss.article.title }</a></li>
-										    	
-										
+										    <li>  <a href="/select?id=${ss.article.id }" target="_blank">${ss.article.title }</a></li>
 										</c:forEach>
 										</ul>
 									</div>
@@ -187,7 +207,6 @@
 								<br>
 								<hr>
 							</c:forEach>
-
 						</div>
 					</div>
 				</div>
@@ -205,7 +224,7 @@
 										width="60px" height="60px">
 									<div class="media-body">
 										<h6>
-											<a href="/selectpic?id=${a.id }" target="blank">${a.title }</a>
+											<a href="/selectpic?id=${a.id }" target="_blank">${a.title }</a>
 										</h6>
 									</div>
 								</div>
@@ -229,7 +248,7 @@
 										width="60px" height="60px">
 									<div class="media-body">
 										<h6>
-											<a href="/select?id=${a.id }" target="blank">${a.title }</a>
+											<a href="/select?id=${a.id }" target="_blank">${a.title }</a>
 										</h6>
 									</div>
 								</div>
@@ -239,29 +258,7 @@
 						</div>
 					</div>
 				</div>
-            <!--  最新文章 -->
-				<div>
-					<div class="card" style="width: 18rem;">
-						<div class="card-header">
-							<strong> 最新文章</strong>
-						</div>
-						<div class="card-body">
-							<c:forEach items="${articlehot }" var="a">
-								<div class="media">
-									<img src="/pic/${a.picture }" class="mr-3" alt="..."
-										width="60px" height="60px">
-									<div class="media-body">
-										<h6>
-											<a href="/select?id=${a.id }" target="blank">${a.title }</a>
-										</h6>
-									</div>
-								</div>
-								<br>
-							</c:forEach>
-
-						</div>
-					</div>
-				</div>
+           
 
 
 			</div>

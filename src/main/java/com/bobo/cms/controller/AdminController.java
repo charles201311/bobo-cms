@@ -137,14 +137,18 @@ public class AdminController {
 	 */
 	@GetMapping("articles")
 	public String users(Model model,Article article ,@RequestParam(defaultValue = "1")Integer page,
-			@RequestParam(defaultValue = "3")Integer pageSize) {
+			@RequestParam(defaultValue = "5")Integer pageSize) {
 		 //默认待审
 		if(article.getStatus()==null)
 		 article.setStatus(0);//待审
 		
 		PageInfo<ArticleWithBLOBs> info = articleService.selects(article, page, pageSize);
+		
+		String url="/admin/articles?status="+article.getStatus();
+		if(null!=article.getTitle())
+			url+="&title=article.getTitle()";
 		//调用分页工具
-		String pages = PageUtil.page(page, info.getPages(), "/admin/articles?title="+article.getTitle()+"&status="+article.getStatus(), pageSize);
+		String pages = PageUtil.page(page, info.getPages(), url, pageSize);
 		model.addAttribute("articles", info.getList());
 		model.addAttribute("article", article);
 		model.addAttribute("pages", pages);
@@ -195,6 +199,7 @@ public class AdminController {
     * @return
     * @return: String
     */
+	
 	@GetMapping("users")
 	public String users(Model model,@RequestParam(defaultValue = "")String username ,@RequestParam(defaultValue = "1")Integer page,
 			@RequestParam(defaultValue = "3")Integer pageSize) {

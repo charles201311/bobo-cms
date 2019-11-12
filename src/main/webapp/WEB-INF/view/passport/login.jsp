@@ -33,7 +33,7 @@
 			<div class="col-md-6">
 					<div class="card" style="width: 26rem;height: 20rem">
 						<div class="card-body">
-							<span style="color: red">${error }</span>
+							<span style="color: red">${message }</span>
 							<h3 class="card-title" align="center">用户登录</h3>
 							<form id="form1" method="post" action="/passport/login">
 								<div class="form-group">

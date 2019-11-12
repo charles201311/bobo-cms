@@ -14,10 +14,8 @@
 <link rel="stylesheet" type="text/css" href="/resource/css/all.min.css" />
 <link rel="stylesheet" type="text/css" href="/resource/css/cms.css" />
 <script type="text/javascript" src="/resource/js/jquery-3.2.1.js"></script>
-<script type="text/javascript"
-		src="/resource/js/bootstrap.min.js"></script>
-		<script type="text/javascript"
-		src="/resource/js/sb-admin.min.js"></script>
+<script type="text/javascript" src="/resource/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/resource/js/sb-admin.min.js"></script>
 </head>
 <body class="bg-light">
 
@@ -27,13 +25,14 @@
 	</div>
 
 	<div id="wrapper">
+	 
 		<!-- 后台管理系统左册菜单 -->
 		<jsp:include page="left.jsp" />
 		<!-- 中间内容显示区域 -->
 		<div id="content-wrapper" class="bg-light">
-		
-		
-			<div align="center"  >
+
+
+			<div align="center">
 				<img alt="" src="/resource/images/bg_admin.jpg"
 					class="rounded-circle">
 			</div>
@@ -41,12 +40,40 @@
 		</div>
 	</div>
 
-<script type="text/javascript">
+	<div>
+		<div id="test"class="modal" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Modal title</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p>Modal body text goes here.</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save
+							changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
+	<script type="text/javascript">
+   
 
 
 //文档就绪函数
  $(function(){
+	 //	$('#test').modal("show");
+	// $(".modal-body").load(url);
+	 
 	 //为左侧菜单添加点击事件
 	 $(".nav-link").click(function(){
 		 var li =$("ul li a");

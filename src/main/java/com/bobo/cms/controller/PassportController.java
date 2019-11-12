@@ -60,6 +60,7 @@ public class PassportController {
 			userService.insertSelective(userVO);
 		   //把注册的用户在登陆页面进行回显
 			redirectAttributes.addFlashAttribute("userVO", userVO);
+			redirectAttributes.addFlashAttribute("message", "恭喜注册成功,请登录");
 			
 			return "redirect:login";
 		}catch (CMSException cms) {

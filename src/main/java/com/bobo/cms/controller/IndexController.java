@@ -150,7 +150,7 @@ public class IndexController {
 				article2.setContentType(ArticleEnum.HTML.getCode());
 				article2.setCreated(DateUtil.getDateByBefore());// 24小时之前的时间
 
-				PageInfo<ArticleWithBLOBs> info = articleService.selects(article2, 1, 100);
+				PageInfo<ArticleWithBLOBs> info = articleService.selects(article2, 1, 50);
 				// 封装查询结果集
 				model.addAttribute("article24", info.getList());
 			}
@@ -164,7 +164,7 @@ public class IndexController {
 				Article article3 = new Article();
 				article3.setStatus(1);// 显示审过的文章
 				article3.setContentType(ArticleEnum.HTML.getCode());
-				PageInfo<ArticleWithBLOBs> info2 = articleService.selects(article3, 1, 10);
+				PageInfo<ArticleWithBLOBs> info2 = articleService.selects(article3, 1,3);
 				// 封装查询结果集
 				model.addAttribute("articlehot", info2.getList());
 
@@ -182,7 +182,7 @@ public class IndexController {
 
 				article4.setContentType(ArticleEnum.IMAGE.getCode());
 
-				PageInfo<ArticleWithBLOBs> info4 = articleService.selects(article4, 1, 10);
+				PageInfo<ArticleWithBLOBs> info4 = articleService.selects(article4, 1, 5);
 
 				// 封装查询结果集
 				model.addAttribute("articlepics", info4.getList());

@@ -231,6 +231,12 @@
 			<artifactId>gson</artifactId>
 			<version>2.8.5</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.12.1</version>
+		</dependency>
 	</dependencies>
 
 
@@ -265,20 +271,18 @@
 						<host>localhost</host>
 					</httpConnector>
 					<!-- 配置虚拟访问路径 -->
-					<contextHandlers>
+				<!-- 	<contextHandlers>
 						<jettyWebAppContext>
-							<!-- 虚拟路径 -->
-							<contextPath>/pic/</contextPath>
+							虚拟路径
+					<contextPath>/pic/</contextPath>
 
-							<!-- 物理路径 -->
-							<resourceBase>D:/pic/</resourceBase>
-							
-						
+							物理路径
+					<resourceBase>/resource/pic/</resourceBase>
 
 						</jettyWebAppContext>
 
 					</contextHandlers>
-
+ -->
 					<scanIntervalSeconds>1</scanIntervalSeconds>
 				</configuration>
 

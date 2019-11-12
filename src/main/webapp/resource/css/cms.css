@@ -62,7 +62,7 @@ ol,ol li{padding: 0;margin: 0}
 .cms-list-group-item-action:hover {
   z-index: 1;
   text-decoration: none;
-  background-color: #ff0000;
+  background-color: #b0ae4f;
 }
 .cms-list-group-item-action:hover a {
   text-decoration: none;

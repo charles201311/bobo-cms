@@ -36,6 +36,7 @@
     <mvc:mapping path="/admin/**"/>
     <!-- 不拦截规则 -->
     <mvc:exclude-mapping path="/resource/**"/>
+     <mvc:exclude-mapping path="/pic/**"/>
    <!-- 拦截器处理类 -->
    <bean class="com.bobo.cms.util.AdminInterceptor"></bean>
  

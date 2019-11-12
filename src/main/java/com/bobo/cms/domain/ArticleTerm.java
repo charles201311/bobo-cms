@@ -3,6 +3,12 @@ package com.bobo.cms.domain;
 import java.io.Serializable;
 
 public class ArticleTerm  implements Serializable{
+	/**
+	 * @fieldName: serialVersionUID
+	 * @fieldType: long
+	 * @Description: TODO
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer aid;
 	private Integer tid;
 	public Integer getAid() {

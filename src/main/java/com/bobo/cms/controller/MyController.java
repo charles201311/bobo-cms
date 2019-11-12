@@ -126,6 +126,7 @@ public class MyController {
 
 				if (!file.isEmpty()) {
 					String path = "d:/pic/";// 文件上传地址
+					
 					// 为了防止文件重名,需要使用uuid改变文件的上传名称
 					// 先获取文件的原始名称.
 					// 1.jpg
@@ -263,7 +264,9 @@ public class MyController {
 	public boolean publish(HttpServletRequest request, ArticleWithBLOBs article, MultipartFile file) {
 		// 文件上传
 		if (!file.isEmpty()) {
-			String path = "d:/pic/";// 文件上传地址
+			//String path = "d:/pic/";// 文件上传地址
+			String path=request.getSession().getServletContext().getRealPath("/")+"/pic/";
+			
 			// 为了防止文件重名,需要使用uuid改变文件的上传名称
 			// 先获取文件的原始名称.
 			// 1.jpg
